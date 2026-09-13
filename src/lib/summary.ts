@@ -25,7 +25,7 @@ function formatNotice(notice: Notice): string {
 
   return [
     `${notice.poolName}: ${start} to ${end}`,
-    `Facilities: ${notice.facilities}`,
+    `Temporarily unavailable: ${notice.facilities}`,
     `Reason: ${notice.reason}`,
     notice.remarks !== "N/A" ? `Details: ${notice.remarks}` : null,
   ]

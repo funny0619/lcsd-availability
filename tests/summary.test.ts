@@ -29,4 +29,10 @@ describe("daily summary", () => {
     expect(summary.notices).toHaveLength(0);
     expect(summary.title).toContain("no known closures");
   });
+
+  it("describes listed facilities as temporarily unavailable", () => {
+    const summary = buildDailySummary([notice], now, 7);
+
+    expect(summary.body).toContain("Temporarily unavailable: Main Pool");
+  });
 });

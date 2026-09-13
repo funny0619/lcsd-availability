@@ -95,7 +95,7 @@ When there are relevant notices, the notification uses:
 Title: Swim check: 1 notice
 
 Victoria Park Swimming Pool: Sep 17, 2026, 7:30 AM to Sep 17, 2026, 3:00 PM
-Facilities: Main Pool, Multi-purpose Pool
+Temporarily unavailable: Main Pool, Multi-purpose Pool
 Reason: School Swimming Gala
 Details: St. Stephen's Girls' College
 

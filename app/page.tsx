@@ -171,7 +171,7 @@ export default function HomePage() {
                         {formatDate(notice.startAt)} to {notice.endAt ? formatDate(notice.endAt) : "until further notice"}
                       </strong>
                     </p>
-                    <p>Facilities: {notice.facilities}</p>
+                    <p>Temporarily unavailable: {notice.facilities}</p>
                     <p>Reason: {notice.reason}</p>
                     {notice.remarks !== "N/A" ? <p>Details: {notice.remarks}</p> : null}
                   </div>
