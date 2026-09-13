@@ -49,10 +49,10 @@ The recipient's phone should not be needed during normal development. The final 
 
 ### Test the notification pipeline without changing LCSD data
 
-Add a protected development/admin action that sends a known test payload such as:
+Add a protected development/admin action that fetches the current LCSD pages and sends the same daily-summary payload as production. Fixture-based parser tests can still use a simulated payload such as:
 
 ```text
-Test alert: Victoria Park Swimming Pool
+Test fixture: Victoria Park Swimming Pool
 Main Pool closed tomorrow from 18:00 to 22:00 for a simulated competition.
 ```
 

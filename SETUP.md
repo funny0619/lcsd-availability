@@ -58,7 +58,7 @@ If the Vercel Supabase integration provides the legacy `SUPABASE_SERVICE_ROLE_KE
 3. Deploy.
 4. Confirm the deployed site opens over HTTPS.
 
-The repository includes `vercel.json`, which configures Vercel Cron to call the daily-summary endpoint at 23:00 UTC, approximately 07:00 Hong Kong time. Vercel Hobby may invoke it within the configured hour.
+The repository includes `vercel.json`, which configures Vercel Cron to call the daily-summary endpoint at 22:00 UTC, approximately 06:00 Hong Kong time. Vercel Hobby may invoke it within the configured hour.
 
 Add `CRON_SECRET` to the Vercel Production environment. Vercel automatically sends it as an `Authorization: Bearer ...` header when it invokes the cron route.
 
@@ -85,7 +85,29 @@ $headers = @{ Authorization = "Bearer YOUR_ADMIN_TEST_TOKEN" }
 Invoke-RestMethod -Method Post -Uri "https://YOUR_APP_URL/api/push/test" -Headers $headers
 ```
 
-This should produce a `Swim Check test alert` on the Redmi. It exercises the stored subscription, VAPID configuration, push sender, service worker, and notification click handling.
+This sends the current live LCSD daily-summary wording on the Redmi. It exercises the stored subscription, VAPID configuration, LCSD fetch/parser, push sender, service worker, and notification click handling without consuming the daily-summary log.
+
+## Notification Wording
+
+When there are relevant notices, the notification uses:
+
+```text
+Title: Swim check: 1 notice
+
+Victoria Park Swimming Pool: Sep 17, 2026, 7:30 AM to Sep 17, 2026, 3:00 PM
+Facilities: Main Pool, Multi-purpose Pool
+Reason: School Swimming Gala
+Details: St. Stephen's Girls' College
+
+Check the official LCSD page before leaving.
+```
+
+When there are no relevant notices and a live admin test is triggered, it uses:
+
+```text
+Title: Swim check: no known closures
+Body: No LCSD temporary closure notices were found for the monitored pools in the next 2 days.
+```
 
 ## Final iPhone Setup
 

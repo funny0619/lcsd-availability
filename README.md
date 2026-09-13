@@ -16,4 +16,4 @@ Read these files at the start of a new session:
 
 ## Current Status
 
-The birthday MVP is scaffolded. It includes the PWA, configuration-driven pool list, LCSD temporary-closure parser, daily summary route, Web Push subscription flow, Supabase schema, and GitHub Actions schedule. Hosting and external service credentials still need to be configured.
+The birthday MVP is scaffolded. It includes the PWA, configuration-driven pool list, LCSD temporary-closure parser, daily summary route, Web Push subscription flow, Supabase schema, and Vercel Cron schedule. Hosting and external service credentials still need to be configured.
