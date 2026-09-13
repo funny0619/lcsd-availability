@@ -97,8 +97,6 @@ Title: 1 main pool closure
 09/17 (Thu) Victoria Park Swimming Pool
 Main Pool closed, School Swimming Gala
 Time: 07:30-15:00
-
-Check the official LCSD page before leaving.
 ```
 
 When there are no relevant notices and a live admin test is triggered, it uses:

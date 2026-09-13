@@ -10,6 +10,7 @@ type Notice = {
   reason: string;
   remarks: string;
   sourceUrl: string;
+  mainPool: boolean;
 };
 
 type PoolStatus = {
@@ -165,7 +166,8 @@ export default function HomePage() {
                   <p className="clear">No temporary closure notices found.</p>
                 ) : null}
                 {pool.notices.map((notice) => (
-                  <div className="notice" key={notice.id}>
+                  <div className={`notice${notice.mainPool ? " notice-main-pool" : ""}`} key={notice.id}>
+                    {notice.mainPool ? <p className="notice-badge">Main Pool</p> : null}
                     <p>
                       <strong>
                         {formatDate(notice.startAt)} to {notice.endAt ? formatDate(notice.endAt) : "until further notice"}

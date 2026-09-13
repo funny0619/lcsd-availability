@@ -184,6 +184,25 @@ button:disabled {
   line-height: 1.45;
 }
 
+.notice-main-pool {
+  border-left-color: var(--blue);
+  background: #eaf4ff;
+  box-shadow: inset 0 0 0 1px #b9d8f4;
+}
+
+.notice-badge {
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--blue);
+  color: white;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .notice p {
   margin-bottom: 5px;
 }
