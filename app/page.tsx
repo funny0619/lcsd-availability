@@ -162,7 +162,7 @@ export default function HomePage() {
 
                 {pool.error ? <p className="error">Data unavailable: {pool.error}</p> : null}
                 {!pool.error && pool.notices.length === 0 ? (
-                  <p className="clear">No Main Pool temporary closure notices found.</p>
+                  <p className="clear">No temporary closure notices found.</p>
                 ) : null}
                 {pool.notices.map((notice) => (
                   <div className="notice" key={notice.id}>

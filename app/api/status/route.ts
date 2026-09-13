@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { fetchConfiguredPoolChecks } from "@/src/lib/lcsd";
-import { hasMainPool } from "@/src/lib/summary";
 
 export const dynamic = "force-dynamic";
 
@@ -15,7 +14,7 @@ export async function GET(): Promise<NextResponse> {
         name: check.pool.name,
         phone: check.pool.phone,
         sourceUrl: check.sourceUrl,
-        notices: check.notices.filter((notice) => hasMainPool(notice.facilities)),
+        notices: check.notices,
         error: check.error,
       })),
     },
