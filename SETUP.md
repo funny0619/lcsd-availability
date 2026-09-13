@@ -49,6 +49,8 @@ Also set:
 
 The default notification window is today and tomorrow. A daily summary is sent at most once per Hong Kong calendar day, and a day with no relevant notices produces no notification.
 
+If the Vercel Supabase integration provides the legacy `SUPABASE_SERVICE_ROLE_KEY` instead, the backend accepts it as a server-only fallback. Prefer `SUPABASE_SECRET_KEY` for new projects.
+
 ## Vercel
 
 1. Import the repository as a Vercel project.
