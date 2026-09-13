@@ -1,5 +1,16 @@
-import { addDays, formatHongKongDateTime } from "@/src/lib/time";
+import {
+  addDays,
+  formatHongKongShortDate,
+  formatHongKongTime,
+  hongKongDateKey,
+} from "@/src/lib/time";
 import type { Notice } from "@/src/lib/types";
+
+export function hasMainPool(facilities: string): boolean {
+  return facilities
+    .split(",")
+    .some((facility) => facility.replace(/\s+/g, " ").trim().toLowerCase() === "main pool");
+}
 
 export function getSummaryNotices(
   notices: readonly Notice[],
@@ -10,6 +21,10 @@ export function getSummaryNotices(
 
   return notices
     .filter((notice) => {
+      if (!hasMainPool(notice.facilities)) {
+        return false;
+      }
+
       const start = new Date(notice.startAt);
       const end = notice.endAt ? new Date(notice.endAt) : null;
       return start <= horizon && (end === null || end >= now);
@@ -18,15 +33,23 @@ export function getSummaryNotices(
 }
 
 function formatNotice(notice: Notice): string {
-  const start = formatHongKongDateTime(notice.startAt);
-  const end = notice.endAt
-    ? formatHongKongDateTime(notice.endAt)
-    : "until further notice";
+  const startDate = formatHongKongShortDate(notice.startAt);
+  const startTime = formatHongKongTime(notice.startAt);
+  let timeRange = `${startTime} until further notice`;
+
+  if (notice.endAt) {
+    const endDate = formatHongKongShortDate(notice.endAt);
+    const endTime = formatHongKongTime(notice.endAt);
+    timeRange =
+      hongKongDateKey(new Date(notice.startAt)) === hongKongDateKey(new Date(notice.endAt))
+        ? `${startTime}-${endTime}`
+        : `${startDate} ${startTime} - ${endDate} ${endTime}`;
+  }
 
   return [
-    `${notice.poolName}: ${start} to ${end}`,
-    `Temporarily unavailable: ${notice.facilities}`,
-    `Reason: ${notice.reason}`,
+    `${startDate} ${notice.poolName}`,
+    `Main Pool closed, ${notice.reason}`,
+    `Time: ${timeRange}`,
     notice.remarks !== "N/A" ? `Details: ${notice.remarks}` : null,
   ]
     .filter(Boolean)
@@ -50,7 +73,7 @@ export function buildDailySummary(
   }
 
   return {
-    title: `Swim check: ${upcoming.length} notice${upcoming.length === 1 ? "" : "s"}`,
+    title: `Swim check: ${upcoming.length} main pool closure${upcoming.length === 1 ? "" : "s"}`,
     body: `${upcoming.map(formatNotice).join("\n\n")}\n\nCheck the official LCSD page before leaving.`,
     notices: upcoming,
   };

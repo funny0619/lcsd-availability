@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildDailySummary, getSummaryNotices } from "@/src/lib/summary";
+import { buildDailySummary, getSummaryNotices, hasMainPool } from "@/src/lib/summary";
 import type { Notice } from "@/src/lib/types";
 
 const now = new Date("2026-09-13T00:00:00.000Z");
@@ -23,6 +23,11 @@ describe("daily summary", () => {
     expect(getSummaryNotices([notice], now, 2)).toHaveLength(0);
   });
 
+  it("matches Main Pool case-insensitively after trimming", () => {
+    expect(hasMainPool("  main pool  , Multi-purpose Pool")).toBe(true);
+    expect(hasMainPool("Training Pool, Toddlers' Pool")).toBe(false);
+  });
+
   it("builds a quiet clear summary when there are no notices", () => {
     const summary = buildDailySummary([], now);
 
@@ -30,9 +35,11 @@ describe("daily summary", () => {
     expect(summary.title).toContain("no known closures");
   });
 
-  it("describes listed facilities as temporarily unavailable", () => {
+  it("describes the main pool closure concisely", () => {
     const summary = buildDailySummary([notice], now, 7);
 
-    expect(summary.body).toContain("Temporarily unavailable: Main Pool");
+    expect(summary.title).toContain("main pool closure");
+    expect(summary.body).toContain("Main Pool closed, Competition");
+    expect(summary.body).toContain("Time: 08:00-15:00");
   });
 });

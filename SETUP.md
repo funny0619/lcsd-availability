@@ -92,11 +92,11 @@ This sends the current live LCSD daily-summary wording on the Redmi. It exercise
 When there are relevant notices, the notification uses:
 
 ```text
-Title: Swim check: 1 notice
+Title: Swim check: 1 main pool closure
 
-Victoria Park Swimming Pool: Sep 17, 2026, 7:30 AM to Sep 17, 2026, 3:00 PM
-Temporarily unavailable: Main Pool, Multi-purpose Pool
-Reason: School Swimming Gala
+09/17 (Thu) Victoria Park Swimming Pool
+Main Pool closed, School Swimming Gala
+Time: 07:30-15:00
 Details: St. Stephen's Girls' College
 
 Check the official LCSD page before leaving.
