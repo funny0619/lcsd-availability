@@ -32,7 +32,7 @@ describe("daily summary", () => {
     const summary = buildDailySummary([], now);
 
     expect(summary.notices).toHaveLength(0);
-    expect(summary.title).toContain("no known closures");
+    expect(summary.title).toBe("No known closures");
   });
 
   it("describes the main pool closure concisely", () => {
@@ -41,5 +41,6 @@ describe("daily summary", () => {
     expect(summary.title).toContain("main pool closure");
     expect(summary.body).toContain("Main Pool closed, Competition");
     expect(summary.body).toContain("Time: 08:00-15:00");
+    expect(summary.body).not.toContain("Details:");
   });
 });

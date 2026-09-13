@@ -50,7 +50,6 @@ function formatNotice(notice: Notice): string {
     `${startDate} ${notice.poolName}`,
     `Main Pool closed, ${notice.reason}`,
     `Time: ${timeRange}`,
-    notice.remarks !== "N/A" ? `Details: ${notice.remarks}` : null,
   ]
     .filter(Boolean)
     .join("\n");
@@ -66,14 +65,14 @@ export function buildDailySummary(
 
   if (!upcoming.length) {
     return {
-      title: "Swim check: no known closures",
+      title: "No known closures",
       body: `No LCSD temporary closure notices were found for the monitored pools in ${lookaheadLabel}.`,
       notices: [],
     };
   }
 
   return {
-    title: `Swim check: ${upcoming.length} main pool closure${upcoming.length === 1 ? "" : "s"}`,
+    title: `${upcoming.length} main pool closure${upcoming.length === 1 ? "" : "s"}`,
     body: `${upcoming.map(formatNotice).join("\n\n")}\n\nCheck the official LCSD page before leaving.`,
     notices: upcoming,
   };

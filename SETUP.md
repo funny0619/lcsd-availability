@@ -92,12 +92,11 @@ This sends the current live LCSD daily-summary wording on the Redmi. It exercise
 When there are relevant notices, the notification uses:
 
 ```text
-Title: Swim check: 1 main pool closure
+Title: 1 main pool closure
 
 09/17 (Thu) Victoria Park Swimming Pool
 Main Pool closed, School Swimming Gala
 Time: 07:30-15:00
-Details: St. Stephen's Girls' College
 
 Check the official LCSD page before leaving.
 ```
@@ -105,7 +104,7 @@ Check the official LCSD page before leaving.
 When there are no relevant notices and a live admin test is triggered, it uses:
 
 ```text
-Title: Swim check: no known closures
+Title: No known closures
 Body: No LCSD temporary closure notices were found for the monitored pools in the next 2 days.
 ```
 
