@@ -14,13 +14,13 @@ function getAdminClient(): SupabaseClient {
   }
 
   const url = process.env.SUPABASE_URL;
-  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const secretKey = process.env.SUPABASE_SECRET_KEY;
 
-  if (!url || !serviceRoleKey) {
-    throw new Error("SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are required");
+  if (!url || !secretKey) {
+    throw new Error("SUPABASE_URL and SUPABASE_SECRET_KEY are required");
   }
 
-  adminClient = createClient(url, serviceRoleKey, {
+  adminClient = createClient(url, secretKey, {
     auth: { autoRefreshToken: false, persistSession: false },
   });
 

@@ -20,9 +20,9 @@ The live status page does not need database credentials. It fetches the configur
 1. Create a Supabase project.
 2. Open the SQL Editor.
 3. Run `supabase/schema.sql`.
-4. Copy the project URL and service-role key into server-side environment variables.
+4. Copy the project URL and secret key into server-side environment variables.
 
-The service-role key must never be exposed as a `NEXT_PUBLIC_` variable or committed to the repository.
+The secret key must never be exposed as a `NEXT_PUBLIC_` variable or committed to the repository.
 
 ## Web Push Keys
 
@@ -41,7 +41,7 @@ Set the generated values as environment variables:
 Also set:
 
 - `SUPABASE_URL`.
-- `SUPABASE_SERVICE_ROLE_KEY`.
+- `SUPABASE_SECRET_KEY`.
 - `CRON_SECRET`.
 - `ADMIN_TEST_TOKEN`.
 - `SEND_CLEAR_SUMMARY=false`.
